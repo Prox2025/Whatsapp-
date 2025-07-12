@@ -1,0 +1,32 @@
+name: Enviar WhatsApp
+
+on:
+  workflow_dispatch:
+    inputs:
+      numero:
+        description: 'Número do destinatário (com DDI, ex: 25884xxxxxxx)'
+        required: true
+      mensagem:
+        description: 'Mensagem a enviar'
+        required: true
+
+jobs:
+  enviar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🔄 Clonar o repositório
+        uses: actions/checkout@v3
+
+      - name: 🧪 Instalar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: 📦 Instalar dependências
+        run: npm install
+
+      - name: 🚀 Enviar mensagem
+        env:
+          NUMERO: ${{ github.event.inputs.numero }}
+          MENSAGEM: ${{ github.event.inputs.mensagem }}
+        run: node send.js
