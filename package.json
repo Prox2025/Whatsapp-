@@ -1,0 +1,12 @@
+{
+  "name": "wpconnect-sender",
+  "version": "1.0.0",
+  "main": "send.js",
+  "type": "module",
+  "scripts": {
+    "start": "node send.js"
+  },
+  "dependencies": {
+    "@wppconnect-team/wppconnect": "^1.9.2"
+  }
+}
